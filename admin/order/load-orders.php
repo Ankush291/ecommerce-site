@@ -10,10 +10,9 @@
         $page = 1;
     }
     $offset = ($page - 1) * $limit;
-    $product_sql = "SELECT order_products.product_id,order_products.order_id,order_products.total_amount,order_products.product_qty,order_products.delivery,order_products.product_user,order_products.order_date,products.featured_image,user.f_name,user.address,user.city,payments.payment_status FROM order_products 
+    $product_sql = "SELECT order_products.product_id,order_products.order_id,order_products.total_amount,order_products.product_qty,order_products.delivery,order_products.product_user,order_products.order_date,products.featured_image,user.f_name,user.address,user.city FROM order_products 
                     LEFT JOIN products ON FIND_IN_SET(products.product_id,order_products.product_id) > 0
                     LEFT JOIN user ON order_products.product_user=user.user_id 
-                    LEFT JOIN payments ON payments.txn_id = order_products.pay_req_id 
                     GROUP BY order_products.order_id 
                     ORDER BY order_products.order_id DESC LIMIT {$offset}, {$limit}";
     $result = mysqli_query($conn, $product_sql);
@@ -27,7 +26,7 @@
                             <th>Total Amount</th>
                             <th>Customer Details</th>
                             <th>Order Date</th>
-                            <th>Payment Status</th>
+                            
                             <th>Delivery Status</th>
                             </thead>
                             <tbody>';
@@ -56,12 +55,6 @@
                                 </td>";
                                 $date = date('d M, Y',strtotime($row['order_date']));
                                 $output .= "<td>{$date}</td>
-                                <td>";
-                                    
-                                if($row['payment_status'] == 'credit'){
-                                    $output .= "<span class='label label-success'>Paid</span>";
-                                }
-                                $output .= "</td>
                                 <td>";
                                     
                                 if($row['delivery'] == '1'){ 
