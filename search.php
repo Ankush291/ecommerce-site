@@ -16,9 +16,10 @@ if($_GET['search'] == ''){
                     <?php
                     
                     $search = mysqli_real_escape_string($conn, $_GET['search']);
-                    $sql = "SELECT sub_categories.sub_cat_id,sub_categories.sub_cat_title FROM products
+                    $sql = "SELECT sub_categories.sub_cat_id, sub_categories.sub_cat_title FROM products
                             LEFT JOIN sub_categories ON products.product_cat = sub_categories.cat_parent
-                            WHERE products.product_title LIKE '%{$search}%'";
+                            WHERE products.product_title LIKE '%{$search}%'
+                            GROUP BY sub_categories.sub_cat_id";
                     $result = mysqli_query($conn, $sql);  ?>
                     <h3>Related Categories</h3>
                     <ul>

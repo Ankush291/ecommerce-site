@@ -203,8 +203,6 @@ $(document).ready(function(){
     });
 
 
-
-  
     $(document).on("click", ".user_logout", function(e){
         console.log("Logout");
         e.preventDefault();
