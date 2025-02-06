@@ -462,13 +462,13 @@ $(document).ready(function(){
             status = '0';
         }
         $.ajax({
-                url: "./sub_category/show-sub-category.php",
-                type: "POST",
-                data: {"sub_cat_id": id, "showInHeader": status},
-                success: function(response){
-                    console.log("Header "+response);
-                }
-            })
+            url: "./sub_category/show-sub-category.php",
+            type: "POST",
+            data: {"sub_cat_id": id, "showInHeader": status},
+            success: function(response){
+                console.log("Header "+response);
+            }
+        })
     });
 
     // script for show categories in footer
@@ -482,13 +482,13 @@ $(document).ready(function(){
             status = '0';
         }
         $.ajax({
-                url: "./sub_category/show-sub-category.php",
-                type: "POST",
-                data: {"sub_cat_id": id, "showInFooter": status},
-                success: function(response){
-                    console.log("Footer "+response);
-                }
-            })
+            url: "./sub_category/show-sub-category.php",
+            type: "POST",
+            data: {"sub_cat_id": id, "showInFooter": status},
+            success: function(response){
+                console.log("Footer "+response);
+            }
+        })
     });
 
     // load brand

@@ -19,8 +19,8 @@
                             <td>'.$row["l_name"].'</td>
                         </tr>
                         <tr>
-                            <td>Username</td>
-                            <td>'.$row["username"].'</td>
+                            <td>Email</td>
+                            <td>'.$row["email"].'</td>
                         </tr>
                         <tr>
                             <td>Mobile</td>
